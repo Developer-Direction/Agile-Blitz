@@ -5,10 +5,18 @@ resource "google_project" "agile-blitz" {
 }
 
 resource "google_storage_bucket" "project_state" {
-  name                     = "terraform-project-state"
+  name                     = "agile-blitz-project-state"
   location                 = "US"
-  public_access_prevention = "enfoced"
-  project                  = google_project.agile-blitz.id
+  public_access_prevention = "enforced"
+  project                  = "agile-blitz"
+
+  depends_on = [google_project.agile-blitz]
+}
+
+resource "google_storage_bucket_object" "name" {
+  name    = "admin-state/"
+  content = "none"
+  bucket  = google_storage_bucket.project_state.name
 }
 
 resource "google_project_service" "cloudrun_api" {
