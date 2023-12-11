@@ -13,7 +13,7 @@ Curriculum for Agile Blitz
 
   - Introduction to Cloud Computing
   - Setting up a Cloud Environment (GCP)
-  - Thursday (Day 5-6): Collaboration and Version Control
+
 
 ## Thursday (Day 3): Collaboration and Version Control (Joint Topic)
 

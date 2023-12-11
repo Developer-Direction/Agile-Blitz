@@ -1,0 +1,161 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-top:5%;  
+  }
+  
+  .textContainer {
+    color: #CCABA2;
+    width: 50%;
+    padding-left: 5%;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .textContainer h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 50px;
+    font-size: 3em;  
+    text-shadow: 0 0 16px rgb(122, 47, 68 / 50%);
+    opacity: 0; 
+    animation-name: fadeIn;
+    animation-duration: 1s; 
+    animation-delay: 0.5s; 
+    animation-fill-mode: forwards;
+  }
+  
+  .textContainer p {
+    font-family: 'Roboto', sans-serif;
+    font-weight:400;
+    font-size: 1.1em;
+    margin-top: -10px;
+    opacity: 0; 
+    animation-name: fadeIn;
+    animation-duration: 3s; 
+    animation-delay: 0.5s; 
+    animation-fill-mode: forwards;
+  }
+  
+  .imageContainer {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    width: 50%;
+    max-width: 300px;
+  }
+  
+  .imageContainer img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    opacity: .8;
+    border-radius: 2%;
+  }
+  .overlay {
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(122, 47, 68);
+    background: rgba(122, 47, 68, 0.5); 
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .imageContainer:hover .overlay {
+    opacity: 1;
+  }
+
+  .arrowLink{
+  display: flex;
+  flex-direction:row;
+  position: absolute;
+  bottom: 2%;
+  text-decoration: none;
+  left: 45%;
+  }
+
+  .arrowButtonText {
+    font-size: 1em;
+    margin-top: -43%;    
+    color: #CCABA2;
+    text-transform: uppercase;
+    
+  }
+
+  .arrowButton {
+    position: relative;
+    left:7px;
+    margin-top: -40%;
+    transition: transform 0.3s ease-out;
+  }
+
+  .arrowLink:hover .arrowButton {
+    transform: translateX(10px);
+  }
+
+  .arrowButton img {
+    position: relative;
+    width:80%;
+    left:800%;
+    top:-8px;
+  }
+
+  .arrowButton::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width:850%;
+    background-color:#CCABA2;
+    
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .mainContainer {
+      margin-top:12%;
+    }
+  
+      
+  }
+
+  @media only screen and (max-width: 768px) {
+    .mainContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin-top:10%;
+    }
+  
+    .textContainer {
+      color: #CCABA2;
+      width: auto;
+      margin-top: 15px;
+      padding-left: 8%;
+      padding-right: 8%;
+    }
+
+    .textContainer h1 {
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      font-size: 3em;  
+      text-shadow: 0 0 16px rgb(16 16 16 / 30%);
+    }
+      
+  }

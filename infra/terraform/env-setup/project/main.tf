@@ -28,3 +28,8 @@ resource "google_project_service" "artifactregistry_api" {
   project = google_project.agile-blitz.project_id
   service = "artifactregistry.googleapis.com"
 }
+
+resource "google_project_service" "compute_api" {
+  project = google_project.agile-blitz.project_id
+  service = "compute.googleapis.com"
+}
