@@ -1,0 +1,3 @@
+[submodule "infra/terraform/projects/example-user/app/betty-portfolio"]
+	path = infra/terraform/projects/example-user/app/betty-portfolio
+	url = https://github.com/bdomingu/betty-portfolio.git
