@@ -2,6 +2,12 @@ module "projectSetup" {
   source = "./project"
 }
 
+resource "google_service_account" "gha_service_account" {
+  project      = "agile-blitz"
+  account_id   = "github-actions-sa"
+  display_name = "GHA Service Account"
+}
+
 module "users" {
   source     = "./modules/service_acct"
   project_id = "agile-blitz"
@@ -13,7 +19,8 @@ module "users" {
     "user:gerardparker13@gmail.com",
     "user:tsasser05@gmail.com",
     "user:costanzajosh@gmail.com",
-    "user:stewart.axup@gmail.com"
+    "user:stewart.axup@gmail.com",
+    google_service_account.gha_service_account.member
   ]
 
   roles = [
