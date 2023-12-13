@@ -54,6 +54,6 @@ jobs:
         with:
           image: "${{ env.IMAGE }}:${{ github.sha }}"
           project_id: "${{ env.PROJECT_ID }}"
-          tag: "${{ github.sha }}"
+          tag: "latest"
           service: "portfolio-site"
   
