@@ -4,6 +4,8 @@ on:
     branches:
       - main
   pull_request:
+    types:
+      - closed
 
 env:
   PROJECT_ID: "agile-blitz"
@@ -34,6 +36,7 @@ jobs:
           context: ./infra/terraform/projects/example-user/betty-portfolio
   
   deploy-prod:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     needs: build-prod
     env:
@@ -54,4 +57,5 @@ jobs:
           image: "${{ env.IMAGE }}:${{ github.sha }}"
           project_id: "${{ env.PROJECT_ID }}"
           tag: "${{ github.sha }}"
+          service: "portfolio-site"
   
