@@ -30,6 +30,7 @@ jobs:
         with:
           push: true
           file: ./infra/terraform/projects/betty-portfolio/Dockerfile
+          tags: "${{ env.IMAGE }}:${{ github.sha }}"
   
   deploy-prod:
     runs-on: ubuntu-latest
