@@ -1,0 +1,55 @@
+name: Deploy to Prod
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  PROJECT_ID: "agile-blitz"
+  REGION: "us-central1"
+  IMAGE: "us-central1-docker.pkg.dev/agile-blitz/portfolio/betty-port-amd"
+
+jobs:
+  build-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: "checkout code"
+
+      - name: Login to Artifact Registry
+        uses: docker/login-action@v2
+        with:
+          registry: us-central1-docker.pkg.dev
+          username: _json_key
+          password: ${{ secrets.GCP_CREDENTIALS }}
+      
+      - name: Build Docker image and push to Google AR
+        id: docker-push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          file: ./infra/terraform/projects/betty-portfolio/Dockerfile
+  
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: build-prod
+    env:
+      name: prod
+    steps:
+      - uses: actions/checkout@v3
+        name: "Checkout code"
+
+      - name: "Authenticate to Gcloud"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
+
+      - name: "Deploy to Prod"
+        id: deploy-port
+        uses: google-github-actions/deploy-cloudrun@v1
+        with:
+          image: "${{ env.IMAGE }}:${{ github.sha }}"
+          project_id: "${{ env.PROJECT_ID }}"
+          tag: "${{ github.sha }}"
+  
