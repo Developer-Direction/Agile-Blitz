@@ -31,6 +31,7 @@ jobs:
           push: true
           file: ./infra/terraform/projects/example-user/betty-portfolio/Dockerfile
           tags: "${{ env.IMAGE }}:${{ github.sha }}"
+          context: ./infra/terraform/projects/example-user/betty-portfolio
   
   deploy-prod:
     runs-on: ubuntu-latest
