@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "clean": "rm -rf .next",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "mocha"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
