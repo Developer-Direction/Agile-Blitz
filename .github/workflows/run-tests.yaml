@@ -1,0 +1,26 @@
+name: automated-tests
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  build-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: "checkout code"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: Install Dependancies
+        run: cd /infra/terraform/projects/example-user/betty-portfolio && npm install
+
+      - name: Run all tests
+        run: cd /infra/terraform/projects/example-user/betty-portfolio && npm run test
