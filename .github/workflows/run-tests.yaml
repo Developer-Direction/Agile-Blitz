@@ -20,7 +20,7 @@ jobs:
           node-version: 16
 
       - name: Install Dependancies
-        run: cd /infra/terraform/projects/example-user/betty-portfolio && npm install
+        run: cd .infra/terraform/projects/example-user/betty-portfolio && npm install
 
       - name: Run all tests
-        run: cd /infra/terraform/projects/example-user/betty-portfolio && npm run test
+        run: cd .infra/terraform/projects/example-user/betty-portfolio && npm run test
