@@ -1,0 +1,27 @@
+name: trivy-vuln-scan
+
+on:
+
+  push:
+
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Trivy vulnerability scanner in fs mode
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'repo'
+        scan-ref: './infra/terraform/projects/example-user/betty-portfolio'
